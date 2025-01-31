@@ -5,7 +5,7 @@ let initialized = false;
 export const connect = async () => {
   mongoose.set("strictQuery", true);
 
-  console.log("MongoDB URI:", process.env.MONGODB_URI); 
+  console.log("MongoDB URI:", process.env.MONGODB_URI);
 
   if (initialized) {
     console.log("MongoDB already connected");
@@ -17,9 +17,8 @@ export const connect = async () => {
   }
 
   try {
-    console.log("Connecting to MongoDB...");
     await mongoose.connect(process.env.MONGODB_URI, {
-      dbName: "nextjs-social-app",
+      dbName: "nextjs-estate",
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
