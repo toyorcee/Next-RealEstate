@@ -1,5 +1,8 @@
+'use client';
+
 import { FaSearch } from "react-icons/fa";
 import Link from "next/link";
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 export default function Header() {
   return (
@@ -11,9 +14,7 @@ export default function Header() {
             <span className="text-slate-700">Estate</span>
           </h1>
         </Link>
-        <form
-          className="bg-slate-100 p-3 rounded-lg flex items-center"
-        >
+        <form className="bg-slate-100 p-3 rounded-lg flex items-center">
           <input
             type="text"
             placeholder="Search..."
@@ -34,11 +35,16 @@ export default function Header() {
               About
             </li>
           </Link>
-          <Link href="/about">
-            <li className="hidden md:inline text-slate-700 hover:underline">
-              Sign in
-            </li>
-          </Link>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+          <SignedOut>
+            <Link href="/sign-in">
+              <li className="hidden md:inline text-slate-700 hover:underline">
+                Sign in
+              </li>
+            </Link>
+          </SignedOut>
         </ul>
       </div>
     </header>
